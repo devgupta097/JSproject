@@ -1,0 +1,123 @@
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title> 
+			Loan Service: Our Bank
+		</title>
+		<link rel="stylesheet" href="bankStyle.css">
+		<style>
+			* {box-sizing: border-box;}
+
+			body { 
+			  margin: 0;
+			  <!--background-image: url('netBank.jpg');-->
+			  background-repeat: no-repeat;
+			  background-attachment: fixed;  
+			  background-size: cover;
+			  background-size: 100% 100%;
+			}
+
+		</style>
+		<script>
+		
+			function setROI()
+			{
+				<!--console.log("method called");-->
+				var loanType=document.getElementById("loanType").value;
+				if(loanType==="home")
+					document.getElementById("roi").value="7%";
+				else if(loanType==="car")
+					document.getElementById("roi").value="9%";
+				else if(loanType==="personal")
+					document.getElementById("roi").value="12%";
+				else
+					document.getElementById("roi").value="";
+				<!--console.log("method completed");-->>
+			}
+			
+			function validateDuration()
+			{
+				var loanType=document.getElementById("loanType").value;
+				var duration=parseInt(document.getElementById("duration").value);
+				console.log(duration+" "+typeof(duration) + " "+ loanType);
+				if(loanType=="") 
+					window.alert("Please select the Loan Type first !")
+				if(loanType=="home" && (duration>25 || duration<=0))
+					window.alert("Duration for Home loan must be from 1 to 25 years.");
+				else if(loanType=="car" && (duration>7 || duration<=0))
+					window.alert("Duration for Car loan must be from 1 to 7 years.");
+				else if(loanType=="personal" && (duration>5 || duration<=0))
+					window.alert("Duration for Personal loan must be from 1 to 5 years.");
+				else
+					calculateEMI();
+			}
+			
+			function calculateEMI()
+			{
+				var p=parseInt(document.getElementById("amount").value);
+				var r=parseInt(document.getElementById("roi").value.charAt(0));
+				var n=parseInt(document.getElementById("duration").value);
+				
+				var emi;
+				emi=(p*r)*(Math.pow((1+r),n)/(Math.pow((1+r),n)-1));
+				document.getElementById("emi").value=emi;
+			}
+		</script>
+	</head>
+	<body>
+
+		<div class="header">
+			<!--<img src="bankLogo.png" class="logo" alt="logo" />-->
+			<div class="header-right">
+				<a href="index.html">Home</a>
+				<a href="about.html">About Us</a>
+				<a href="service.html">Services</a>
+				<a href="netbanking.html">Net Banking</a>
+				<a href="contact.html">Contact Us</a>
+			</div>
+		</div>
+
+		<div>
+			<h1 style="width:31%;">Loan Service: Our Bank</h1>
+
+			<div style="margin:auto; padding:30px 0px 0px 30px">
+			
+				<form onsubmit="return false;" action="#"> 
+					<h4> 
+						<label>Applicant: &emsp;</label>
+						<input type="text" name="applicant" id="applicant" required> <br><br>
+						<label>Amount: &emsp;&nbsp;&nbsp;&nbsp;</label>
+						<input type="text" name="amount" id="amount" required> <br><br> 
+						<label>Type: &emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;</label>
+						<select style="width:25%;" name="loanType" id="loanType" onchange="setROI()" required>
+							<option value="">- Select Loan Type</option>
+							<option value="home">Home Loan</option>
+							<option value="car">Car Loan</option>
+							<option value="personal">Personal Loan</option>
+						</select> 
+						<br><br> 
+						<label>ROI: &emsp;&emsp;&emsp;&nbsp;</label>
+						<input type="text" name="roi" id="roi" disabled> <br><br> 
+						<label> Duration: &emsp;&nbsp;</label>
+						<input type="text" name="duration" id="duration" required> 
+						<br><br> 
+						<label>EMI: &emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+						<input type="text" name="emi" id="emi" disabled> <br><br> 
+						<br><br>
+						<input type="submit" name="b1" value="Calculate" style="margin-left:5%; padding:2px; width:9%" onclick="validateDuration()">
+						
+					</h4>
+				</form>
+			</div>
+		</div>
+		<footer>
+			<p style="margin-bottom:6px;">Copyright &copy;2022 Author: Dev Gupta</p>
+			<p style="margin-top:6px;"><a href="mailto:Dev.Gupta@wissen.com">Dev.Gupta@wissen.com</a></p>
+		</footer>
+	</body>
+</html>
+
+
+
+

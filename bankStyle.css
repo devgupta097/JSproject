@@ -1,0 +1,73 @@
+footer {
+  text-align: center;
+  padding: 3px;
+  background-color: #839cb1;
+  color: black;
+  bottom: 0;
+  position: absolute;
+  width: 100%;
+}
+.header {
+  overflow: hidden;
+  background-color: #839cb1;
+  padding: 7px 7px;
+  height:51px;
+}
+
+.header a {
+  float: left;
+  color: black;
+  text-align: center;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 18px; 
+  line-height: 10px;
+  /*border-radius: 4px;*/
+}
+
+.header img.logo {
+  width:50px;
+  height:50px;
+}
+
+.header a:hover {
+  /*background-color: #ddd;*/
+  border-bottom: 2px solid white;
+  color: black;
+}
+
+.header a.active {
+  /*background-color: blue;*/
+  /*border-bottom: 2px solid white;*/
+  color: white;
+}
+
+.header-right {
+  float: right;
+}
+
+h1{
+	/*border: 5px solid blue;*/
+	text-align:center;
+	padding:2px;
+	color: black;
+	/*background-color:#f1f1f1;*/
+	border-bottom:3px solid black;
+	width:38%;
+	margin:auto;
+	margin-top:1%;
+}
+
+input[type=text], input[type=password], textarea{
+  width: 25%;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-left: 2%;
+  height: 2%;
+}
+
+.signUp{
+	
+	color:red;
+}

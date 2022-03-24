@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title> 
+			Fixed Deposit Service: Our Bank
+		</title>
+		<link rel="stylesheet" href="bankStyle.css">
+		<style>
+			* {box-sizing: border-box;}
+
+			body { 
+			  margin: 0;
+			  <!--background-image: url('netBank.jpg');-->
+			  background-repeat: no-repeat;
+			  background-attachment: fixed;  
+			  background-size: cover;
+			  background-size: 100% 100%;
+			}
+
+		</style>
+		<script>
+			
+			function validateDuration()
+			{
+				var duration=parseInt(document.getElementById("duration").value);
+				console.log(duration);
+				if(duration<=0 || duration>10) 
+					window.alert("Duration must be from 1 to 10 years !")
+				else
+				{
+					if(duration>0 && duration<=2)
+						document.getElementById("roi").value="5%";
+					else if(duration>2 && duration<=5)
+						document.getElementById("roi").value="6%";
+					else if(duration>5 && duration<=10)
+						document.getElementById("roi").value="7%";
+				}
+			}
+			
+			function calculateMaturity()
+			{
+				var p=parseInt(document.getElementById("amount").value);
+				var r=parseInt(document.getElementById("roi").value.charAt(0));
+				var n=parseInt(document.getElementById("duration").value);
+				
+				var maturity = p*(Math.pow((1+(r/100)),n));
+				document.getElementById("maturity").value=maturity;
+			}
+		</script>
+	</head>
+	<body>
+
+		<div class="header">
+			<!--<img src="bankLogo.png" class="logo" alt="logo" />-->
+			<div class="header-right">
+				<a href="index.html">Home</a>
+				<a href="about.html">About Us</a>
+				<a href="service.html">Services</a>
+				<a href="netbanking.html">Net Banking</a>
+				<a href="contact.html">Contact Us</a>
+			</div>
+		</div>
+
+		<div>
+			<h1 style="width:31%;">FD Service: Our Bank</h1>
+
+			<div style="margin:auto; padding:30px 0px 0px 30px">
+			
+				<form onsubmit="return false;" action="#"> 
+					<h4> 
+						<label>Amount: &emsp;&nbsp;&nbsp;&nbsp;</label>
+						<input type="text" name="amount" id="amount" required> <br><br> 
+						<label>Duration: &emsp;&nbsp;</label>
+						<input type="text" name="duration" id="duration" onchange="validateDuration()" required> <br><br> 
+						<label>ROI: &emsp;&emsp;&emsp;&nbsp;</label>
+						<input type="text" name="roi" id="roi" disabled> <br><br> 
+						<label>Maturity: &emsp;&nbsp;</label>
+						<input type="text" name="maturity" id="maturity" disabled> <br><br> 
+						<br><br>
+						<input type="submit" name="b1" value="Calculate" style="margin-left:5%; padding:2px; width:9%" onclick="calculateMaturity()">
+						
+					</h4>
+				</form>
+			</div>
+		</div>
+		<footer>
+			<p style="margin-bottom:6px;">Copyright &copy;2022 Author: Dev Gupta</p>
+			<p style="margin-top:6px;"><a href="mailto:Dev.Gupta@wissen.com">Dev.Gupta@wissen.com</a></p>
+		</footer>
+	</body>
+</html>
+
+
+
+
